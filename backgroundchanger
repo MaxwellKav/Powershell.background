@@ -1,0 +1,16 @@
+$url = "https://images.aftonbladet-cdn.se/v2/images/46cc2e6c-a682-4646-88ee-f85aa4a90077?fit=crop&format=auto&h=601&q=50&w=800&s=3abdda9e03c080cfb1d5739e893617ea7d5c88de"
+$tempPath = [System.IO.Path]::GetTempFileName() + ".jpg"
+Invoke-WebRequest -Uri $url -OutFile $tempPath
+$style = 0
+$position = 0
+$code = @"
+using System;
+using System.Runtime.InteropServices;
+
+public class WallpaperChanger {
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern int SystemParametersInfo(uint uAction, uint uParam, string lpvParam, uint fuWinIni);
+}
+"@
+Add-Type -TypeDefinition $code
+[WallpaperChanger]::SystemParametersInfo(20, 0, $tempPath, 3)
