@@ -1,4 +1,4 @@
-$url = "https://wallpapers.com/images/high/musashi-miyamoto-vagabond-manga-vb0s2dolygv5lcz2.webp"
+$url = "https://cdn.discordapp.com/attachments/1111654766750216274/1154326675824316496/image.png"
 $tempPath = [System.IO.Path]::GetTempFileName() + ".jpg"
 Invoke-WebRequest -Uri $url -OutFile $tempPath
 $style = 0
