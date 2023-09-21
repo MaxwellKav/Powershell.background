@@ -1,4 +1,4 @@
-$url = "https://images.aftonbladet-cdn.se/v2/images/46cc2e6c-a682-4646-88ee-f85aa4a90077?fit=crop&format=auto&h=601&q=50&w=800&s=3abdda9e03c080cfb1d5739e893617ea7d5c88de"
+$url = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fmoulshree.medium.com%2Fbecome-undefeatable-the-philosophy-of-miyamoto-musashi-b9e8eaebd156&psig=AOvVaw1LsZ4BNL4-PH2zwc5gSey0&ust=1695369140731000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCIjT8K2cu4EDFQAAAAAdAAAAABAE"
 $tempPath = [System.IO.Path]::GetTempFileName() + ".jpg"
 Invoke-WebRequest -Uri $url -OutFile $tempPath
 $style = 0
