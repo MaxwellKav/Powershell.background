@@ -1,16 +1,1 @@
-$url = "https://cdn.discordapp.com/attachments/1111654766750216274/1154326675824316496/image.png"
-$tempPath = [System.IO.Path]::GetTempFileName() + ".jpg"
-Invoke-WebRequest -Uri $url -OutFile $tempPath
-$style = 0
-$position = 0
-$code = @"
-using System;
-using System.Runtime.InteropServices;
-
-public class WallpaperChanger {
-    [DllImport("user32.dll", CharSet = CharSet.Auto)]
-    public static extern int SystemParametersInfo(uint uAction, uint uParam, string lpvParam, uint fuWinIni);
-}
-"@
-Add-Type -TypeDefinition $code
-[WallpaperChanger]::SystemParametersInfo(20, 0, $tempPath, 3)
+for(){hh }
